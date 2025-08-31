@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفصل الثالث: طرائق وأدوات جمع البيانات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(to bottom, #f5f7fa, #e4e7ec);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #3498db;
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin: 35px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            font-size: 28px;
+        }
+        
+        h3 {
+            color: #3498db;
+            margin: 30px 0 15px;
+            font-size: 24px;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-right: 4px solid #3498db;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        h4 {
+            color: #e74c3c;
+            margin: 25px 0 12px;
+            font-size: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+        
+        .student-name {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-right: 4px solid #3498db;
+        }
+        
+        .methods {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .methods h3 {
+            background: none;
+            border-right: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        ul, ol {
+            margin: 20px 0;
+            padding-right: 30px;
+        }
+        
+        li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        
+        li:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: right;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: white;
+            font-size: 18px;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e9f7ff;
+        }
+        
+        .example {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-right: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .note {
+            background-color: #fff3cd;
+            border-right: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+        }
+        
+        .steps li {
+            list-style-type: none;
+            position: relative;
+            padding-right: 45px;
+        }
+        
+        .steps li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #3498db;
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            h3 {
+                font-size: 20px;
+            }
+            
+            p, li {
+                font-size: 16px;
+            }
+        }
+        
+        .icon {
+            margin-left: 8px;
+            color: #3498db;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-database icon"></i>الفصل الثالث: طرائق وأدوات جمع البيانات</h1>
+            <p>شرح شامل للفصل الثالث من كتاب "أساليب البحث العلمي: منظور تطبيقي" للدكتور جمعة فايز النجار</p>
+            <div class="student-name">إعداد الطالب: قيس طلال الجازي</div>
+        </header>
+
+        <section class="content-section">
+            <h2><i class="fas fa-target icon"></i>مقدمة</h2>
+            <p>يحتاج الباحث إلى البيانات المختلفة لإتمام بحثه، وعليه أن يختار الأدوات المناسبة لجمع البيانات سواء كانت ثانوية أو أولية. يوجد العديد من أدوات جمع البيانات والتي يمكن أن يختار منها الباحث ما يناسب بحثه، كما يمكنه أيضاً أن يستخدم أكثر من طريقة في آن واحد.</p>
+            
+            <div class="note">
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2><i class="fas fa-sitemap icon"></i>مصادر البيانات</h2>
+            <p>يمكن تحديد مصادر البيانات عموماً بطريقتين هما:</p>
+            
+            <h3>1. مصادر البيانات حسب طبيعة البيانات</h3>
+            
+            <h4>أ. البيانات الثانوية (Secondary Data)</h4>
+            <p>وهي البيانات التي جمعت سابقاً من قبل بحث آخر أو مشروع آخر وغالباً ما يكون الاعتماد عليها أقل كلفة ووقتاً.</p>
+            
+            <h4>أمثلة على مصادر البيانات الثانوية:</h4>
+            <ul>
+                <li>الكتب والمؤلفات ذات العلاقة</li>
+                <li>المجلات العلمية والأبحاث المنشورة فيها</li>
+                <li>الوثائق</li>
+                <li>الأطروحات الجامعية (أطروحات الدكتوراه ورسائل الماجستير)</li>
+                <li>الشبكة العنكبوتية WWW وما تحتويه من مصادر إلكترونية مختلفة</li>
+                <li>قواعد البيانات المختلفة</li>
+                <li>بيانات دائرة الإحصاءات العامة، وبيانات الوزارات والدوائر المختلفة</li>
+            </ul>
+            
+            <h4>ب. البيانات الأولية (Primary Data)</h4>
+            <p>هي بيانات تجمع لأول مرّة من قبل الباحث نفسه من مجتمع خاص لمشروع الباحث، وتكون تحت يديه.</p>
+            
+            <h4>أمثلة على البيانات الأولية:</h4>
+            <ul>
+                <li>الاستبيان (Questionnaire)</li>
+                <li>المقابلة (Interview)</li>
+                <li>الملاحظة (Observation)</li>
+                <li>طرق الإسقاط (Projective Methods)</li>
+            </ul>
+            
+            <h3>2. مصادر البيانات حسب طبيعة البحث</h3>
+            <p>تنقسم مصادر البيانات حسب طبيعة البحث إلى:</p>
+            <ul>
+                <li><span class="highlight">بيانات مجتمع</span>: وهي البيانات التي تشمل جميع أفراد المجتمع محل الدراسة</li>
+                <li><span class="highlight">بيانات عينة</span>: وهي البيانات التي يتم جمعها من عينة ممثلة للمجتمع</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2><i class="fas fa-toolbox icon"></i>أدوات جمع البيانات الأولية</h2>
+            
+            <div class="methods">
+                <h3><i class="fas fa-question-circle icon"></i>أولاً: الاستبيان (Questionnaire)</h3>
+                <p>يعتبر الاستبيان أحد أهم أدوات جمع البيانات في البحث العلمي، حيث يتكون من مجموعة من الأسئلة المعدة مسبقاً بهدف الحصول على معلومات من المستجيبين.</p>
+                
+                <h4>خطوات بناء الاستبيان:</h4>
+                <ol class="steps">
+                    <li>تحديد الأهداف والمعلومات المطلوبة</li>
+                    <li>تحديد العينة والمجتمع المستهدف</li>
+                    <li>تحديد محاور الاستبيان بتفصيل موضوع البحث إلى عناصره الرئيسة</li>
+                    <li>صياغة الأسئلة بوضوح ودقة مع الالتزام بالإرشادات المقترحة</li>
+                    <li>ترتيب الأسئلة من العام إلى الخاص ومن السهل إلى الصعب</li>
+                    <li>إعداد الإرشادات للمستجيبين</li>
+                    <li>اختبار الاستبيان قبلياً (Pilot Study)</li>
+                    <li>التنفيذ النهائي وتوزيع الاستبيان</li>
+                </ol>
+                
+                <h4>أنواع الأسئلة في الاستبيان:</h4>
+                <ul>
+                    <li><strong>الأسئلة المغلقة (Closed Questions):</strong> هي أسئلة تحتاج إلى أجوبة محددة حيث يطلب من المستجيب أن يضع رمزاً على الإجابة التي يوافق عليها.</li>
+                    
+                    <div class="example">
+                        <p><strong>مثال على السؤال المغلق:</strong></p>
+                        <p>ضع إشارة (x) داخل المربع وأمام العبارة المناسبة من وجهة نظرك.</p>
+                        <p>الكليّة التي تدرس بها:</p>
+                        <p>□ كلية الآداب</p>
+                        <p>□ كلية التربية</p>
+                        <p>□ كلية العلوم الإدارية والمالية</p>
+                        <p>□ كلية العلوم وتكنولوجيا المعلومات</p>
+                        <p>الجنس: □ ذكر □ أنثى</p>
+                    </div>
+                    
+                    <li><strong>الأسئلة المفتوحة (Open Questions):</strong> هي أسئلة تعطي الحرية للمستجيب بأن يصوغ الإجابة التي يريد، وهي مفيدة في الحصول على معلومات تفصيلية.</li>
+                    
+                    <div class="example">
+                        <p><strong>مثال على السؤال المفتوح:</strong></p>
+                        <p>ما هي أهم الصعوبات التي تواجهك في الدراسة؟</p>
+                        <p>________________________________________________________________</p>
+                        <p>________________________________________________________________</p>
+                    </div>
+                </ul>
+                
+                <h4>بعض الأحكام المقترحة لصياغة أسئلة الاستبيان:</h4>
+                <ul>
+                    <li>تجنب الأسئلة التي تعتمد على التذكر لأن المعلومة قد لا تكون دقيقة في ذاكرة المستجيب</li>
+                    <li>تجنب الأسئلة التي تقود إلى إجابات معينة</li>
+                    <li>تجنب الأسئلة المشحونة بالعواطف</li>
+                    <li>تجنب الأسئلة التي توحي بإجابات مرغوبة اجتماعياً</li>
+                    <li>تجنب الأسئلة الطويلة والتي تحتاج إلى شرح مطول</li>
+                    <li>الاهتمام بتتابع الأسئلة والانتقال من العام إلى الخاص</li>
+                </ul>
+                
+                <h4>إرشادات للمستجيبين:</h4>
+                <p>يفضل وضع الإرشادات في بداية الاستبيان بتعليمات صريحة وواضحة تبين:</p>
+                <ul>
+                    <li>عنوان وصفي للدراسة</li>
+                    <li>فقرة مختصرة عن أهداف الدراسة</li>
+                    <li>اسم المؤسسة التي تشرف أو تدعم البحث</li>
+                    <li>اسم الشخص الذي يجب على المستجيب أن يعيد إليه الاستبيان بعد تعبئته</li>
+                </ul>
+                
+                <h4>طرق توزيع الاستبيان:</h4>
+                <ul>
+                    <li>شخصي باليد</li>
+                    <li>باليد وبمساعدة الآخرين</li>
+                    <li>عن طريق البريد</li>
+                    <li>عن طريق البريد الإلكتروني</li>
+                    <li>عن طريق وسائل التواصل الاجتماعي</li>
+                </ul>
+                
+                <h4>الوسائل التي تحفز المستجيب على الاستجابة:</h4>
+                <ul>
+                    <li>تقديم هدايا رمزية للمستجيبين</li>
+                    <li>ضمان السرية والخصوصية</li>
+                    <li>إيضاح أهمية البحث وفوائده</li>
+                    <li>تذكير لطيف بالمستجيبين الذين لم يستجيبوا بعد</li>
+                </ul>
+                
+                <h4>مزايا وعيوب الاستبيان:</h4>
+                <table class="comparison-table">
+                    <tr>
+                        <th>المزايا</th>
+                        <th>العيوب</th>
+                    </tr>
+                    <tr>
+                        <td>الموضوعية في الإجابة</td>
+                        <td>انخفاض نسبة الردود</td>
+                    </tr>
+                    <tr>
+                        <td>الحصول على معلومات من عدد كبير</td>
+                        <td>إمكانية إعطاء إجابات غير صحيحة</td>
+                    </tr>
+                    <tr>
+                        <td>توفير الوقت والجهد</td>
+                        <td>عدم القدرة على ملاحظة ردود الفعل</td>
+                    </tr>
+                    <tr>
+                        <td>مناسبة للمجتمعات الكبيرة</td>
+                        <td>الإبهام في الأسئلة قد يوقع المستجيب في الحيرة</td>
+                    </tr>
+                    <tr>
+                        <td>إتاحة الوقت الكافي للمستجيب للتفكير في الإجابات</td>
+                        <td>لا يصلح الاستبيان في المجتمعات الأمية</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="methods">
+                <h3><i class="fas fa-comments icon"></i>ثانياً: المقابلة (Interview)</h3>
+                <p>هي تفاعل لفظي يتم بين شخصين في موقف مواجهة، حيث يحاول أحدهم (القائم بالمقابلة) أن يستثير بعض المعلومات أو التعبيرات لدى المبحوث حول آرائه ومعتقداته.</p>
+                
+                <h4>أنواع المقابلات حسب درجة الضبط:</h4>
+                <ul>
+                    <li><strong>المقابلات غير المهيكلة (Unstructured Interviews):</strong> لا تعتمد على خطة متسلسلة من الأسئلة، وتهدف إلى استطلاع بعض القضايا التمهيدية.</li>
+                    <li><strong>المقابلات المهيكلة (Structured Interviews):</strong> تعتمد على مجموعة محددة مسبقاً من الأسئلة التي يتم طرحها بنفس الترتيب لكل المستجيبين.</li>
+                </ul>
+                
+                <h4>أنواع المقابلات حسب طبيعتها:</h4>
+                <ul>
+                    <li><strong>المقابلات الشخصية (Face to Face Interviews):</strong> تتم وجهاً لوجه بين الباحث والمستجيب.</li>
+                    <li><strong>المقابلات الهاتفية (Telephone Interviews):</strong> تتم عبر الهاتف وتناسب الحالات التي يتعذر فيها اللقاء الشخصي.</li>
+                    <li><strong>المقابلات المرئية (Video Conferencing Interviews):</strong> تتم باستخدام التكنولوجيا وهي مناسبة في حالة تباعد المناطق الجغرافية.</li>
+                    <li><strong>المقابلة بمساعدة الحاسب (Computer Assisted Interviewing):</strong> تعرض الأسئلة على شاشة الحاسب ويقوم الباحث بإدخال إجابات المشتجب مباشرة.</li>
+                </ul>
+                
+                <h4>الاعتبارات الرئيسية في المقابلة الجيدة:</h4>
+                <ol>
+                    <li>صياغة المقابلة بطريقة تضمن الحصول على الإجابات المناسبة</li>
+                    <li>أخذ الإذن من الأفراد المراد مقابلتهم مسبقاً</li>
+                    <li>تحديد زمان ومكان المقابلة بشكلها النهائي</li>
+                    <li>حث المقابلين على إعطاء إجابات دقيقة وموضوعية</li>
+                    <li>تدوين المقابلة بدقة بعد إذن المقابل</li>
+                </ol>
+                
+                <h4>كيف تصبح المقابلة أسلوباً علمياً؟</h4>
+                <p>تصبح المقابلة أسلوباً علمياً إذا توفر بها:</p>
+                <ul>
+                    <li>القدرة على إدارة الحوار</li>
+                    <li>الكفاءة في تحليل وجهات النظر الرئيسية</li>
+                    <li>الدقة في تدوين نتائج المقابلة وتفصيلاتها</li>
+                </ul>
+                
+                <h4>التحيز في المقابلة (Interview Bias):</h4>
+                <p>هناك العديد من الأسباب التي يمكن أن تؤدي إلى التحيز في المقابلة منها:</p>
+                <ul>
+                    <li>إجراء المقابلة مع مستجيبين وهم مشغولون جداً أو تحت ضغط العمل</li>
+                    <li>توجيه أسئلة عن مواضيع حساسة مثل الإضرابات والأجور</li>
+                    <li>الجملة الافتتاحية التي يقدمها الباحث والتي قد تتسبب في تحيز إضافي</li>
+                </ul>
+                
+                <h4>الأخطاء التي يمكن أن تقع في المقابلات:</h4>
+                <ul>
+                    <li><strong>خطأ الإثبات:</strong> إذا أخفق الباحث في التعرف على أو قلل من أهمية حادثة هامة</li>
+                    <li><strong>خطأ الحذف:</strong> إذا حذف الباحث حقيقة جوهرية أو تعبيراً ما ذكره المقابل</li>
+                    <li><strong>خطأ الإضافة:</strong> إذا ضخم الباحث أو طور إجابة الشخص الذي قابله بعبارات لم يذكرها</li>
+                    <li><strong>خطأ الاستبدال:</strong> إذا نسب الباحث كلمات الشخص الذي قابله واستبدلها بكلمات أخرى</li>
+                    <li><strong>خطأ التبديل:</strong> إذا لم يتذكر الباحث تسلسل الأحداث وقام بتغيير تسلسل الأحداث الحقيقي</li>
+                </ul>
+            </div>
+            
+            <!-- سيتم إضافة الأقسام المتبقية هنا -->
+            <div class="methods">
+                <h3><i class="fas fa-eye icon"></i>ثالثاً: الملاحظة (Observation)</h3>
+                <p>هي مشاهدة الظواهر من قبل الباحث أو من ينوب عنه، بقصد تفسيرها واكتشاف أسبابها والتنبؤ بسلوكها والوصول إلى القوانين التي تحكمها.</p>
+                
+                <h4>الأدوار التي يلعبها الباحث خلال الملاحظة:</h4>
+                <ul>
+                    <li><strong>الملاحظ غير المشارك (Non-Participant Observer):</strong> لا ينضم الباحث إلى المنظمة أو البيئة البحثية بل يبقى متفرجاً عن بعد دون تدخل.</li>
+                    <li><strong>الملاحظ المشارك (Participant Observer):</strong> ينضم الباحث إلى المنظمة أو البيئة البحثية ويقوم بدور المشارك في حياة الجماعة ونشاطاتهم.</li>
+                </ul>
+                
+                <h4>أنواع الملاحظة حسب درجة الضبط:</h4>
+                <ul>
+                    <li><strong>الملاحظة البسيطة (Simple Observation):</strong> تكون غير مخططة وملاحظة الظواهر كما تحدث طبيعياً دون إخضاعها للضبط العلمي.</li>
+                    <li><strong>الملاحظة المنتظمة (Systematic Observation):</strong> تتبع مخططاً مسبقاً مع إخضاعها للضبط العلمي وتحديد ظروف الملاحظة.</li>
+                </ul>
+                
+                <h4>أنواع الملاحظة تبعاً للهدف:</h4>
+                <ul>
+                    <li><strong>الملاحظة المقصودة:</strong> تتم بهدف محدد وموجه نحو ظاهرة معينة</li>
+                    <li><strong>الملاحظة غير المقصودة:</strong> تتم بدون تخطيط مسبق لملاحظة ظاهرة معينة</li>
+                </ul>
+                
+                <h4>الاعتبارات الرئيسية في الملاحظة الجيدة:</h4>
+                <ul>
+                    <li>التسجيل الآني للملاحظة وقت حدوثها</li>
+                    <li>تجنب التفسيرات والتأويلات المسبقة</li>
+                    <li>تصنيف وتحديد المعلومات أثناء الملاحظة</li>
+                    <li>الملاحظة بعناية وتفحص والتعمق في موضوع البحث</li>
+                </ul>
+                
+                <h4>مزايا وعيوب الملاحظة:</h4>
+                <table class="comparison-table">
+                    <tr>
+                        <th>المزايا</th>
+                        <th>العيوب</th>
+                    </tr>
+                    <tr>
+                        <td>قد تكون الوسيلة الوحيدة لدراسة السلوك الإنساني دون سؤال</td>
+                        <td>قد يغير الأفراد سلوكهم إذا شعروا بالمراقبة</td>
+                    </tr>
+                    <tr>
+                        <td>لا تتطلب جهوداً كبيرة من المجموعة التي تجري ملاحظتها</td>
+                        <td>من الصعب توقع حادثة معينة أو تكرارها</td>
+                    </tr>
+                    <tr>
+                        <td>تمكن الباحث من جمع الحقائق وقت حدوثها</td>
+                        <td>بعض الأحداث لا يمكن ملاحظتها مباشرة</td>
+                    </tr>
+                    <tr>
+                        <td>مناسبة للبحوث التي تتطلب بيانات وصفية</td>
+                        <td>قد تكون مكلفة خاصة إذا كانت محكومة بعوامل محددة</td>
+                    </tr>
+                </table>
+                
+                <h4>التحيز في الملاحظة (Observation Bias):</h4>
+                <p>قد تكون البيانات التي تجمع عن طريق الملاحظة عرضة للتحيز لعدة أسباب منها:</p>
+                <ul>
+                    <li>عدم التأكد في فهم الملاحظين للسلوك الذي تمت ملاحظته</li>
+                    <li>عدم التأكد من توفر الاتساق في فهم الملاحظين للسلوك</li>
+                    <li>الإجهاد والتعب المتواصل لفترة زمنية طويلة</li>
+                    <li>تغير الأفراد لسلوكهم إذا شعروا بالمراقبة</li>
+                    <li>تأثير العواطف على الملاحظ خاصة في الملاحظة المشاركة</li>
+                </ul>
+            </div>
+            
+            <div class="methods">
+                <h3><i class="fas fa-brain icon"></i>رابعاً: طريقة الإسقاط (Projective Method)</h3>
+                <p>هي أسلوب للحصول على الإجابات عن طريق استخدام المعاني المرتبطة بالكلمات، وإكمال الجمل، واختيارات الإسقاط، والتي بدونها يصعب الحصول على تلك الإجابات.</p>
+                
+                <h4>أنواع الأساليب الإسقاطية حسب طبيعة المثير:</h4>
+                <ul>
+                    <li><strong>الأساليب الإسقاطية الرمزية/المصورة:</strong> مثل اختبار رورشاخ (Rorschach Test) واختبار تفهم الموضوع (Thematic Apperception Test)</li>
+                    <li><strong>الأساليب الإسقاطية اللفظية:</strong> مثل أساليب ترابط الألفاظ واختبار تكملة الجملة الناقصة واختبار تكملة القصة</li>
+                    <li><strong>الأساليب السيكودرامية (Psychodrama):</strong> حيث يطلب من المستجوب تمثيل موقف معين أو تقليد شخصية معينة</li>
+                </ul>
+                
+                <h4>مزايا وعيوب الأساليب الإسقاطية:</h4>
+                <table class="comparison-table">
+                    <tr>
+                        <th>المزايا</th>
+                        <th>العيوب</th>
+                    </tr>
+                    <tr>
+                        <td>مساعدة في دراسة الجوانب النفسية والشخصية</td>
+                        <td>صعوبة تفسير البيانات بسبب الانفعال والعصبية</td>
+                    </tr>
+                    <tr>
+                        <td>المرونة في الاستخدام</td>
+                        <td>احتمالات التحيز في تفسير النتائج</td>
+                    </tr>
+                    <tr>
+                        <td>مفيدة في الدراسات المقارنة بين المجتمعات</td>
+                        <td>صعوبة تقنين البيانات وتصنيفها وتحليلها</td>
+                    </tr>
+                    <tr>
+                        <td>الكشف عن الدوافع والاتجاهات الخفية</td>
+                        <td>تحتاج إلى أفراد متخصصين للقيام بالبحث</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="methods">
+                <h3><i class="fas fa-layer-group icon"></i>خامساً: جمع البيانات بطرق متعددة (Multi Methods)</h3>
+                <p>يمكن للباحث جمع البيانات بطرق مختلفة ومن مصادر متعددة في آن واحد، مما يجعل البحث أكثر دقة وأكثر ثقة بجودة البيانات. إذا كانت البيانات التي تجمع من مصادر مختلفة متشابهة بدرجة كبيرة، فسيكون لدينا قناعة بجودة البيانات.</p>
+                
+                <p>من أمثلة جمع البيانات بطرق متعددة:</p>
+                <ul>
+                    <li>جمع البيانات عن طريق الاستبيان والمقابلة معاً</li>
+                    <li>استخدام الملاحظة مع المقابلة للتأكد من دقة المعلومات</li>
+                    <li>الجمع بين البيانات الأولية والثانوية</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <div class="student-name">إعداد الطالب: قيس طلال الجازي</div>
+            <p>شرح الفصل الثالث: طرائق وأدوات جمع البيانات - من كتاب "أساليب البحث العلمي: منظور تطبيقي" للدكتور جمعة فايز النجار</p>
+        </footer>
+    </div>
+</body>
+</html>
